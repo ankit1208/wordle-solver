@@ -5,6 +5,42 @@ from collections import Counter, defaultdict
 st.set_page_config(page_title="Wordle Solver", layout="centered")
 st.title("Wordle Solver")
 
+with st.sidebar:
+    st.title("📘 How to Use Wordle Solver")
+
+    st.markdown("""
+    Welcome to the **Wordle Solver Assistant** – your companion for cracking the Wordle puzzle!
+
+    This tool helps you solve the daily **[Wordle](https://www.nytimes.com/games/wordle/index.html)** puzzle faster by suggesting the best possible next words based on your clues.
+
+    ---
+
+    ### How to Use It
+
+    1. **Open the official Wordle game** in another browser tab or window:  
+        [https://www.nytimes.com/games/wordle](https://www.nytimes.com/games/wordle)
+
+    2. **Play Wordle normally** and enter your first word (e.g. `ADIEU`).
+
+    3. **In this app**, enter the same guess and mark each letter’s color result:
+       - 🟩 **Green** — Correct letter in the correct spot  
+       - 🟨 **Yellow** — Correct letter, wrong spot  
+       - ⬜ **Grey** — Letter not in the word  
+
+    4. Click **“Submit”** and let the solver suggest your next best guess.
+
+    5. Continue until you find the correct word!
+
+    ---
+
+    ### Tips
+    - Start with vowel-heavy words like **ADIEU**, **AUDIO**, or **CRANE**.  
+    - After 3–4 guesses, try the **“Maximize Chance”** button (if available) — it uses a broader letter strategy to narrow down remaining possibilities faster.
+    - Keep this app open **side by side** with the Wordle website for a smoother experience.
+
+    **Enjoy solving Wordle with a data-backed edge!**
+    """)
+
 @st.cache_data
 def load_word_list():
     url = "https://raw.githubusercontent.com/tabatkins/wordle-list/main/words"
