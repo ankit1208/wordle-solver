@@ -134,6 +134,39 @@ if st.button("Get Next Possible Words (and Best)"):
             st.write(", ".join(w.upper() for _, w in scored[:50]))
             st.caption(f"({len(candidates)} total matches)")
 
+
+# --- New: Suggest Maximizing Word (for info gain) ---
+if st.button("Get Maximizing Word (Use New Letters)"):
+    guesses = []
+    for r in range(6):
+        g = st.session_state.words[r]
+        if len(g) == 5 and g.isalpha():
+            guesses.append({"guess": g.lower(), "colors": st.session_state.colors[r]})
+
+    if not guesses:
+        st.warning("Please enter at least one guess first.")
+    else:
+        candidates = filter_candidates(WORD_LIST, guesses)
+        guessed_letters = set("".join(g["guess"] for g in guesses))
+
+        # Score words that introduce the most *new* letters not guessed yet
+        scored = []
+        for w in WORD_LIST:
+            unique_letters = set(w)
+            # prefer words with 5 unique letters
+            diversity_bonus = len(unique_letters)
+            # new letters not yet guessed
+            new_letters = len(unique_letters - guessed_letters)
+            # combine score
+            score = new_letters * 2 + diversity_bonus
+            scored.append((score, w))
+
+        scored.sort(reverse=True)
+        best_score, best_word = scored[0]
+        st.success(f"Try this word for maximum information: {best_word.upper()} (score {best_score})")
+        st.write(f"Top 20 info-gain words: {', '.join(w.upper() for _, w in scored[:20])}")
+
+
 if st.button("Reset"):
     st.session_state.colors = [["gray"] * 5 for _ in range(6)]
     st.session_state.words = [""] * 6
