@@ -13,6 +13,12 @@ Here’s how the Wordle Solver looks in action:
 
 ![Wordle Solver Screenshot](images/image.png)
 
+## Preview
+
+Hosted on 
+https://wordle-solver-9mfzcfutaf5pscfan4cwqp.streamlit.app/
+
+
 ## Features
 
 **Interactive Wordle-style Grid**
