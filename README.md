@@ -1,4 +1,4 @@
-# Wordle Solver — Streamlit App
+# Wordle Solver : Streamlit App
 
 A Wordle assistant that helps you find the next best guess — built with Python and Streamlit.  
 It replicates the original Wordle UI, where you can enter words, mark letters as green, yellow, or gray,  
