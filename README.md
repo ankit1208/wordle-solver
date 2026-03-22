@@ -67,7 +67,7 @@ The app filters and scores words based on the rules of Wordle:
 
 1. Clone the repository:
    ```bash
-   git clone https://github.com/<your-username>/wordle-solver.git
+   git clone https://github.com/ankit1208/wordle-solver.git
    cd wordle-solver
 Create a virtual environment (optional but recommended):
 
